@@ -24,9 +24,10 @@ chassis_nao_encontrados = df_merged[df_merged['Chassi'].isna()]
 
 # Adicionar uma linha indicando os chassis não encontrados
 if not chassis_nao_encontrados.empty:
-    df_merged = pd.concat([df_merged, chassis_nao_encontrados])
-
+  df_merged = pd.concat([df_merged, chassis_nao_encontrados])
+  
 # Salvar a nova planilha com os dados combinados, incluindo os chassis não encontrados
 df_merged.to_excel('planilha_combinada.xlsx', index=False)
+
 
 print("Planilha combinada criada com sucesso!")
