@@ -1,0 +1,20 @@
+DISPAROS 
+
+1 MES - PARABENS PELA COMPRA (CHAMDA PARA ACAO)
+	-> Disparar para todos as vendas 1 mes anterior 
+
+3 MES - AVISO SOBRE CONSCIENTIZACAO DA KILOMETRAGEM DE 1000 (CHAMDA PARA ACAO)
+
+5 MES - LEMBRETE
+
+VENCIDO - ULTIMA OPORTUNIDADE
+
+
+* relatorio do IHS autaliza, quando o cliente faz a revisao ele é removido do relatorio
+
+
+POS NOTAS 16/09
+
+-> Nao sao todos os cadastros que veem com numero de telefone celular.
+	. Garantir que os Caixas estejam cadastrando no campo certo
+	. Verificar em um exemplo se há a possibilidade do cel estar no campo tel
