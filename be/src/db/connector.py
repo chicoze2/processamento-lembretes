@@ -20,7 +20,7 @@ def connect():
         )
         
         if conexao.is_connected():
-            print('Conectado ao MySQL com sucesso!')
+            print('Conectado ao Banco de Dados MySQL com sucesso!')
             return conexao
     
     except Error as e:
