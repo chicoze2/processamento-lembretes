@@ -26,6 +26,7 @@ def inserir_dados_vendas(planilha_vendas: str, relatorio_txt: str):
 
     # Salvar apenas os chassis não encontrados em um arquivo TXT
     chassis_nao_encontrados['CHASSI_VENDIDO'].to_csv('chassis_nao_encontrados.txt', index=False, header=False)
+    
     # Processar apenas os chassis encontrados
     try: 
         vendas = vendas.sort_values(by='Pessoa')
