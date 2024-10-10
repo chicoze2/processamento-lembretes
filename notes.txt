@@ -1,0 +1,1 @@
+Criar um metodo para sempre quando disparar para API, verificar entre os chassis retornados se está nos chassis faltantes.
