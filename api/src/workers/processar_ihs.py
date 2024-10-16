@@ -1,9 +1,9 @@
 import pandas as pd
-from connect import make_request
+from mk_api import make_request
 
-relatorio_txt = 'api/src/workers/taubate_maio.txt'
-output_faltantes_txt = 'chassis_faltantes.txt'
-output_excel_consolidados = 'pendentes_consolidados.xlsx'
+relatorio_txt = 'output/taubate_maio.txt'
+output_faltantes_txt = 'output/chassis_faltantes.txt'
+output_excel_consolidados = 'output/pendentes_consolidados.xlsx'
 
 def processar_ihs():
     # Abrir os dados do relatorio de revisoes pendentes no IHS.
@@ -24,7 +24,7 @@ def processar_ihs():
             "SemAutorizacaoExpedicao=True;"
             "ComAutorizacaoExpedicao=True;"
             "Tipodevenda=null;"
-            "Periododamovimentacaofinal=2024-05-31 00:00;"
+            "Periododamovimentacaofinal=2024-06-30 00:00;"
             "ComExpedicao=True;"
             "SemExpedicao=True;"
             "Modelodoveiculo=null;"
@@ -34,7 +34,7 @@ def processar_ihs():
             "TipoVeiculo=null;"
             "Pessoa=null;"
             "Estadodoveiculo=null;"
-            "Periododamovimentacaoinicial=2024-05-01 00:00;"
+            "Periododamovimentacaoinicial=2024-04-01 00:00;"
             "TipoPessoa=null;"
             "Pontodevendadovendedor=null;"
             "FinanceiraLeasing=null;"
@@ -47,7 +47,6 @@ def processar_ihs():
     
     # Fazer a requisição e obter os dados de vendas
     vendas = make_request(body)
-    
     # Criar um DataFrame para as vendas
     df_vendas = pd.DataFrame(vendas)
     
@@ -68,7 +67,8 @@ def processar_ihs():
     #juntar as informacoes (chass com nome etc...)
     info_consolidado = pd.merge(pendentes_consolidados, pd.DataFrame(vendas), left_on='CHASSI_VENDIDO', right_on='chassi', how='left')
     info_consolidado = info_consolidado.drop(columns=['NOME_CLIENTE', 'TELEFONE_RESIDENCIAL', 'TELEFONE_COMERCIAL', 'RAMAL', 'E_MAIL'])
-    info_consolidado.to_excel("infos_consolidado.xlsx")
+    info_consolidado.to_excel(output_excel_consolidados)
 
     print(info_consolidado)
+    
 processar_ihs()
