@@ -44,3 +44,4 @@ Gostaria de agendar agora a sua revisão?
 ## salvar resultado como CSV
 df_mensagens = pd.DataFrame(mensagens)
 df_mensagens.to_csv('output/mensagens.csv', index=False)
+ 

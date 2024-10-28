@@ -1,0 +1,3 @@
+add no csv mensagens, um campo "tipo disparo" para quando for processar o envio, etiquetar corretamente o chat OK
+
+ADD NUMERO DE CHASSI COMO OPORTUNIDADE 

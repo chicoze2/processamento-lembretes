@@ -1,11 +1,11 @@
 import pandas as pd
-from mk_api import make_request
+from new.mk_api import make_request
 
 relatorio_txt = 'output/taubate_maio.txt'
 output_faltantes_txt = 'output/chassis_faltantes.txt'
 output_excel_consolidados = 'output/pendentes_consolidados.xlsx'
 
-def processar_ihs():
+def processar_ihs(delta_D):
     # Abrir os dados do relatorio de revisoes pendentes no IHS.
     relatorio_pendentes = pd.read_csv(relatorio_txt, sep='|')
     
@@ -67,8 +67,27 @@ def processar_ihs():
     #juntar as informacoes (chass com nome etc...)
     info_consolidado = pd.merge(pendentes_consolidados, pd.DataFrame(vendas), left_on='CHASSI_VENDIDO', right_on='chassi', how='left')
     info_consolidado = info_consolidado.drop(columns=['NOME_CLIENTE', 'TELEFONE_RESIDENCIAL', 'TELEFONE_COMERCIAL', 'RAMAL', 'E_MAIL'])
-    info_consolidado.to_excel(output_excel_consolidados)
 
-    print(info_consolidado)
-    
-processar_ihs()
+    #Filtrar por dias após a compra (DIAS_APOS_A_VENDA)
+
+    # Periodo 1 - 23 a 29
+    # Periodo 2 - 83 a 89
+    # Periodo 3 - 153 a 159
+    # Periodo 4 - 180 a 186
+
+    # Filtrar por dias após a compra (DIAS_APOS_A_VENDA) baseado no tipo de disparo
+    info_consolidado['DIAS_APOS_A_VENDA'] = pd.to_numeric(info_consolidado['DIAS_APOS_A_VENDA'], errors='coerce')
+    if delta_D == 1:
+        info_consolidado = info_consolidado[(info_consolidado['DIAS_APOS_A_VENDA'] >= 23) & (info_consolidado['DIAS_APOS_A_VENDA'] <= 29)]
+    elif delta_D == 2:
+        info_consolidado = info_consolidado[(info_consolidado['DIAS_APOS_A_VENDA'] >= 83) & (info_consolidado['DIAS_APOS_A_VENDA'] <= 89)]
+    elif delta_D == 3:
+        info_consolidado = info_consolidado[(info_consolidado['DIAS_APOS_A_VENDA'] >= 153) & (info_consolidado['DIAS_APOS_A_VENDA'] <= 159)]
+    elif delta_D == 4:
+        info_consolidado = info_consolidado[(info_consolidado['DIAS_APOS_A_VENDA'] >= 180) & (info_consolidado['DIAS_APOS_A_VENDA'] <= 186)]
+
+    info_consolidado.to_excel(output_excel_consolidados)
+    print(f"Dados salvos em {output_excel_consolidados}")
+
+delta_D = int(input("Digite o tipo de disparo"))
+processar_ihs(delta_D)

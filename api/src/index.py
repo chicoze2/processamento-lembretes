@@ -1,3 +1,5 @@
-import workers
+import workers.processar_ihs
 
-relatorio_ihs = workers.processar_ihs()
+
+
+### CRIAR ESSE INDEX COMO HANDLER PARA AUTOMATIZAR O PROCESSO, VISTO QUE, AS ETAPAS ISOLADAS JÁ ESTAO FUNCIONANDO.

@@ -3,10 +3,10 @@ import pandas as pd
 
 from zap_api import *
 # Carregar CSV
-df = pd.read_csv("output/mensagens.csv")
+df = pd.read_csv("mensagens.csv")
 
 for index, row in df.iterrows():
-    numero = row['telefone']
+    numero = int(row['telefone'])
     mensagem = row['mensagem']
 
     print(f"Enviando mensagem para o número: {numero}")
