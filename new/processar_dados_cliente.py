@@ -14,7 +14,7 @@ def process_relatorios(periodo_inicial, periodo_final, relatorio_ihs_path):
         "idrelatorioconfiguracaoleiaute": 248,
         "idrelatoriousuarioleiaute": 1968,
         "ididioma": 1,
-        "listaempresas": [3],
+        "listaempresas": [1,2,3,4,5,6,7,8,9,10,11,13,14,18,19,16,17],
         "filtros": (
             "EquipeCRM=null;"
             "DesconsiderarEstornadoDevolvido=False;"
@@ -53,7 +53,7 @@ def process_relatorios(periodo_inicial, periodo_final, relatorio_ihs_path):
     chassis_faltantes = [chassi for chassi in chassis_pendentes if chassi not in df_vendas['chassi'].tolist()]
     
     # Salvar os chassis faltantes em um arquivo de texto
-    with open('chassis_faltando_info_cliente.txt', 'w') as f:
+    with open('out/chassis_faltando_info_cliente.txt', 'w') as f:
         for chassi in chassis_faltantes:
             f.write(f"{chassi}\n")
     
@@ -64,7 +64,7 @@ def process_relatorios(periodo_inicial, periodo_final, relatorio_ihs_path):
     info_consolidado = pd.merge(pendentes_consolidados, pd.DataFrame(realatorio_vendas), left_on='CHASSI_VENDIDO', right_on='chassi', how='left')
     info_consolidado = info_consolidado.drop(columns=['NOME_CLIENTE', 'TELEFONE_RESIDENCIAL', 'TELEFONE_COMERCIAL', 'RAMAL', 'E_MAIL'])
 
-    info_consolidado.to_excel('consolidados.xlsx')
+    info_consolidado.to_excel('out/consolidados.xlsx')
 
 # process_relatorios("2024-05-01", "2024-10-23", "./taubate_out.txt")
 
@@ -73,7 +73,7 @@ def make_message(modelo, nome, delta_D: str):
     delta_DInt = int(delta_D)
 
     if 23 <= delta_DInt <= 29: ## Primeiro
-        num_disparo = 1
+        etiqueta = 35
         mensagem = f"""Olá {nome}, parabéns pela aquisição da sua *Honda {modelo}!*
 
 Você sabia que a 1ª revisão da sua motocicleta é essencial para manter a garantia de até três anos?
@@ -84,31 +84,31 @@ Gostaria de agendar agora a sua revisão?
 
 É rápido e fácil!"""
     elif 83 <= delta_DInt <= 89: ## Segundo
-        num_disparo = 2
+        etiqueta = 36
         mensagem = f"""Olá {nome}! 
 
-Lembramos que a primeira revisão da sua {modelo} está chegando. 
+Lembramos que a primeira revisão da sua *Honda {modelo}* está chegando. 
 
 Ela vence em 6 meses ou 1000 km rodados, o que ocorrer primeiro. Não se esqueça de realizar a revisão para garantir a manutenção da garantia da sua moto. 
 
 Deseja agendar agora?"""
     elif 153 <= delta_DInt <= 159: ## Terceiro
-        num_disparo = 3
+        etiqueta = 37
         mensagem = f"""Olá {nome}! 
 
-Faltam 30 dias para o vencimento da primeira revisão da sua {modelo}! 
+Faltam 30 dias para o vencimento da primeira revisão da sua *Honda {modelo}!**
 
 Lembre-se, é essencial realizá-la em até 6 meses ou 1000 km rodados, para manter a garantia da sua moto. 
 
 Deseja agendar agora?
 
 """
-        num_disparo = 2        
+        etiqueta = 2        
     elif 173 <= delta_DInt <= 179: ## Quarto
-        num_disparo = 4
+        etiqueta = 38
         mensagem = f"""Olá {nome}! 
 
-Última chance para realizar a primeira revisão da sua Honda {modelo}. 
+Última chance para realizar a primeira revisão da sua *Honda {modelo}.*
 
 O prazo de 6 meses está quase acabando. 
 
@@ -118,7 +118,7 @@ Garanta a manutenção da sua garantia agendando agora mesmo por aqui!
     else:
         return None, None
 
-    return mensagem, num_disparo
+    return mensagem, etiqueta
 
 
 def process_messages(relatorio_consolidado_path):
@@ -127,23 +127,31 @@ def process_messages(relatorio_consolidado_path):
     mensagens_processadas = []
 
     for index, row in relatorio_consolidado.iterrows():
-        modelo = row['modelo'] 
-        nome_raw = row['pessoa'] 
-        nome = nome_raw.split()[0].title()
-        telefone = str(row['telefonecelularformatado']).replace('-', '').replace(' ', '').replace('(', '').replace(')', '')
-        delta_D = row['DIAS_APOS_A_VENDA'] 
-        print(f"{telefone} + {nome}")
-        mensagem, num_disparo = make_message(modelo, nome, delta_D)
+        try:
+            modelo = row['modelo'] 
+            delta_D = row['DIAS_APOS_A_VENDA'] 
+            chassi = row['chassi']
 
-        if mensagem != None:
-            if telefone != "":
-                mensagens_processadas.append({'telefone': telefone, 'mensagem': mensagem, 'num_disparo': num_disparo})
+            nome_raw = row['pessoa'] 
+            nome = nome_raw.split()[0].title()
+            telefone = str(row['telefonecelularformatado']).replace('-', '').replace(' ', '').replace('(', '').replace(')', '')
+
+            print(f"{telefone} + {nome}")
+            mensagem, etiqueta = make_message(modelo, nome, delta_D)
+
+            if mensagem != None:
+                if telefone != "":
+                    mensagens_processadas.append({'telefone': telefone, 'mensagem': mensagem, 'etiqueta': etiqueta, 'chassi': chassi})
     
-    df_mensagens = pd.DataFrame(mensagens_processadas)
-    df_mensagens.to_csv('mensagens.csv', index=False)
 
-process_relatorios('2024-04-01', '2024-09-30', 'taubate_out.txt')
-process_messages('consolidados.xlsx')
+        except Exception as e:
+            print(f"Ocorreu um erro dentro do loop process messages {e}")
+
+    df_mensagens = pd.DataFrame(mensagens_processadas)
+    df_mensagens.to_csv('out/mensagens.csv', index=False)
+
+process_relatorios('2024-04-01', '2024-09-30', 'taubate_nov.txt')
+# process_messages('out/consolidados.xlsx')
 
 
 
