@@ -36,3 +36,21 @@ def send_message(payload, headers=None):
             return
     except Exception as err:
         print(f"An error occurred: {err}")
+
+def send_opportunity(payload, headers=None):
+    try:
+
+        print("Enviando lead para CRM ")
+        response = requests.post("https://universohonda.atenderbem.com/int" + '/createOpportunity', json=payload, headers=headers)
+        
+        response.raise_for_status()  # Check if the request was successful        
+        return response.json() # Return the response in JSON format (if applicable)
+    
+    except requests.exceptions.HTTPError as http_err:
+        print('error handler - API send_opportunity')
+        print(f"HTTP error occurred: (opportunity){http_err}")
+        print(payload)
+        print('===========================================')
+    except Exception as err:
+        print(f"An error occurred: {err}")
+

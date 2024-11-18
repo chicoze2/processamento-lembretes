@@ -73,6 +73,7 @@ def make_message(modelo, nome, delta_D: str):
     delta_DInt = int(delta_D)
 
     if 23 <= delta_DInt <= 29: ## Primeiro
+        disparo = 39
         etiqueta = 35
         mensagem = f"""Olá {nome}, parabéns pela aquisição da sua *Honda {modelo}!*
 
@@ -84,6 +85,7 @@ Gostaria de agendar agora a sua revisão?
 
 É rápido e fácil!"""
     elif 83 <= delta_DInt <= 89: ## Segundo
+        disparo = 41
         etiqueta = 36
         mensagem = f"""Olá {nome}! 
 
@@ -93,6 +95,7 @@ Ela vence em 6 meses ou 1000 km rodados, o que ocorrer primeiro. Não se esqueç
 
 Deseja agendar agora?"""
     elif 153 <= delta_DInt <= 159: ## Terceiro
+        disparo = 42
         etiqueta = 37
         mensagem = f"""Olá {nome}! 
 
@@ -103,8 +106,8 @@ Lembre-se, é essencial realizá-la em até 6 meses ou 1000 km rodados, para man
 Deseja agendar agora?
 
 """
-        etiqueta = 2        
     elif 173 <= delta_DInt <= 179: ## Quarto
+        disparo = 43
         etiqueta = 38
         mensagem = f"""Olá {nome}! 
 
@@ -116,9 +119,10 @@ Garanta a manutenção da sua garantia agendando agora mesmo por aqui!
 """
 
     else:
-        return None, None
+        return None, None, None
+        print(f"Ignorado {nome} - {delta_D} dias" )
 
-    return mensagem, etiqueta
+    return mensagem, etiqueta, disparo
 
 
 def process_messages(relatorio_consolidado_path):
@@ -131,17 +135,17 @@ def process_messages(relatorio_consolidado_path):
             modelo = row['modelo'] 
             delta_D = row['DIAS_APOS_A_VENDA'] 
             chassi = row['chassi']
-
+            cidade = row['municipiouf']
             nome_raw = row['pessoa'] 
             nome = nome_raw.split()[0].title()
             telefone = str(row['telefonecelularformatado']).replace('-', '').replace(' ', '').replace('(', '').replace(')', '')
 
             print(f"{telefone} + {nome}")
-            mensagem, etiqueta = make_message(modelo, nome, delta_D)
+            mensagem, etiqueta, disparo = make_message(modelo, nome, delta_D)
 
-            if mensagem != None:
+            if etiqueta != None:
                 if telefone != "":
-                    mensagens_processadas.append({'telefone': telefone, 'mensagem': mensagem, 'etiqueta': etiqueta, 'chassi': chassi})
+                    mensagens_processadas.append({'telefone': telefone, 'mensagem': mensagem, 'etiqueta': etiqueta, 'chassi': chassi, 'nome' : nome, 'disparo' : disparo, 'cidade': cidade})
     
 
         except Exception as e:
@@ -150,8 +154,8 @@ def process_messages(relatorio_consolidado_path):
     df_mensagens = pd.DataFrame(mensagens_processadas)
     df_mensagens.to_csv('out/mensagens.csv', index=False)
 
-process_relatorios('2024-04-01', '2024-09-30', 'taubate_nov.txt')
-# process_messages('out/consolidados.xlsx')
+process_relatorios('2024-06-06', '2024-11-18', 'taubate_nov3.txt')
+process_messages('out/consolidados.xlsx')
 
 
 
