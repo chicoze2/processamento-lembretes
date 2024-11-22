@@ -11,34 +11,10 @@ payloadMk = {
     "idrelatorioconfiguracaoleiaute": 248,
     "idrelatoriousuarioleiaute": 2010,
     "ididioma": 1,
-    "listaempresas": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 18, 19, 16, 17],
-    "filtros": (
-        "EquipeCRM=null;"
-        "DesconsiderarEstornadoDevolvido=False;"
-        "Cor=null;"
-        "SemAutorizacaoExpedicao=True;"
-        "ComAutorizacaoExpedicao=True;"
-        "Tipodevenda=null;"
-        "Periododamovimentacaofinal=2024-11-19 00:00;"
-        "ComExpedicao=True;"
-        "SemExpedicao=True;"
-        "Modelodoveiculo=6207,5922,5921,5920,5919,5918,5917,5916,5915,5914,5913,5912,5911,5910,5909,5908,5907,5906,5905,6400,6401,6402,6403,6404,6405,6406,6407,6408,6409,6410,6411,6412,6413,6414,6415,6416,6417,6418,5444,5445,5446,5447,5448,5449,5436,6004,5437,5438,5439,5450,5451,5452,5566,5440,5441,5442,5443,2019,2104,2313,2522,2731,2940,3149,3358,3567,3776,3985,4194,4403,5039,5264,5578,2018,2017,6016,4878,2023,2024,2025,2137,2346,2555,2764,2973,3182,3391,3600,3809,4018,4227,6017,5579,5103,4436,2262,2680,2889,3098,3307,3516,3725,3934,4143,4352,4561,5055,5742,6180,4830,2053,2054,2055,2471;"
-        "Tipodemovimento=2,25,26,22,11,9,17,10,21,32;"
-        "Municipio=null;"
-        "Consorcio=null;"
-        "TipoVeiculo=null;"
-        "Pessoa=null;"
-        "Estadodoveiculo=null;"
-        "Periododamovimentacaoinicial=2024-11-18 00:00;"
-        "TipoPessoa=null;"
-        "Pontodevendadovendedor=null;"
-        "FinanceiraLeasing=null;"
-        "FinanceiraCalculo=null;"
-        "Origemdavenda=null;"
-        "Vendedor=null;"
-        "MovimentosCancelados=False"
-    )
+    "listaempresas": [3, 4, 5, 6, 7, 9, 11, 13, 18, 16, 17],
+    "filtros": "EquipeCRM=null;DesconsiderarEstornadoDevolvido=False;Cor=null;SemAutorizacaoExpedicao=True;ComAutorizacaoExpedicao=True;Tipodevenda=null;Periododamovimentacaofinal=2024-11-22 00:00;ComExpedicao=True;SemExpedicao=True;Modelodoveiculo=null;Tipodemovimento=2,25,26,22,11,9,17,10,21,32;Municipio=null;Consorcio=null;TipoVeiculo=null;Pessoa=null;Estadodoveiculo=null;Periododamovimentacaoinicial=2024-11-21 00:00;TipoPessoa=null;Pontodevendadovendedor=null;FinanceiraLeasing=null;FinanceiraCalculo=null;Origemdavenda=null;Vendedor=null;MovimentosCancelados=False"
 }
+
 
 response = make_request(payloadMk)
 
