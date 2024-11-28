@@ -1,3 +1,7 @@
 
 *.xlsx
 *.env
+*.txt
+new/out/.DS_Store
+*.csv
+*.csv

@@ -15,6 +15,27 @@ for index, row in df.iterrows():
         disparo = row['disparo']
         cidade = row['cidade']
 
+        ### envio oportunidade
+        try:
+            leadOpportunity = {
+                "queueId": 57,
+                "apiKey": "f59f332a2c5827556c9782e1c3b3c0a6",
+                "responsableid": 540,
+                "title": nome + "" +  chassi,
+                "fkPipeline": 6,
+                "fkStage": disparo,
+                "mainphone": "55" + str(numero),
+                "description": cidade,
+            }
+
+            send_opportunity(leadOpportunity)
+
+        except Exception as e:
+            print(f"Ocorreu um erro na requisição criar oportunidade")
+            print(e)
+            print(leadOpportunity)
+
+        ## ENVIO CHAT
         try:
             print(f"Enviando mensagem para o número: {numero}")
 
@@ -52,30 +73,9 @@ for index, row in df.iterrows():
             
 
         except requests.exceptions.Timeout:
-            print(f"Timeout ao tentar abrir o chat para o número: {numero}")
+            print(f"chat - Timeout ao tentar abrir o chat para o número: {numero}")
         except requests.exceptions.RequestException as e:
-            print(f"Erro ao fazer a requisição: {e}")
-
-        ### envio oportunidade
-        try:
-
-            leadOpportunity = {
-                "queueId": 57,
-                "apiKey": "f59f332a2c5827556c9782e1c3b3c0a6",
-                "responsableid": 540,
-                "title": nome + "" +  chassi,
-                "fkPipeline": 6,
-                "fkStage": disparo,
-                "mainphone": "55" + str(numero),
-                "description": cidade,
-            }
-
-            send_opportunity(leadOpportunity)
-
-        except Exception as e:
-            print(f"Ocorreu um erro na requisição criar oportunidade")
-            print(e)
-            print(leadOpportunity)
+            print(f"chat - Erro ao fazer a requisição: {e}")
 
     except Exception as e:
         print(f"Ocorreu um erro dentro do loop principal {e}")

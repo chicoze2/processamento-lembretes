@@ -12,7 +12,7 @@ payloadMk = {
     "idrelatoriousuarioleiaute": 2010,
     "ididioma": 1,
     "listaempresas": [3, 4, 5, 6, 7, 9, 11, 13, 18, 16, 17],
-    "filtros": "EquipeCRM=null;DesconsiderarEstornadoDevolvido=False;Cor=null;SemAutorizacaoExpedicao=True;ComAutorizacaoExpedicao=True;Tipodevenda=null;Periododamovimentacaofinal=2024-11-22 00:00;ComExpedicao=True;SemExpedicao=True;Modelodoveiculo=null;Tipodemovimento=2,25,26,22,11,9,17,10,21,32;Municipio=null;Consorcio=null;TipoVeiculo=null;Pessoa=null;Estadodoveiculo=null;Periododamovimentacaoinicial=2024-11-21 00:00;TipoPessoa=null;Pontodevendadovendedor=null;FinanceiraLeasing=null;FinanceiraCalculo=null;Origemdavenda=null;Vendedor=null;MovimentosCancelados=False"
+    "filtros": "EquipeCRM=null;DesconsiderarEstornadoDevolvido=False;Cor=null;SemAutorizacaoExpedicao=True;ComAutorizacaoExpedicao=True;Tipodevenda=null;Periododamovimentacaofinal=2024-11-27 00:00;ComExpedicao=True;SemExpedicao=True;Modelodoveiculo=null;Tipodemovimento=2,25,26,22,11,9,17,10,21,32;Municipio=null;Consorcio=null;TipoVeiculo=null;Pessoa=null;Estadodoveiculo=null;Periododamovimentacaoinicial=2024-11-26 00:00;TipoPessoa=null;Pontodevendadovendedor=null;FinanceiraLeasing=null;FinanceiraCalculo=null;Origemdavenda=null;Vendedor=null;MovimentosCancelados=False"
 }
 
 

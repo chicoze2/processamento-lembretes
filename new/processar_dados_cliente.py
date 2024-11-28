@@ -154,7 +154,7 @@ def process_messages(relatorio_consolidado_path):
     df_mensagens = pd.DataFrame(mensagens_processadas)
     df_mensagens.to_csv('out/mensagens.csv', index=False)
 
-process_relatorios('2024-06-06', '2024-11-18', 'taubate_nov3.txt')
+process_relatorios('2024-06-06', '2024-11-25', 'taubate_nov3.txt')
 process_messages('out/consolidados.xlsx')
 
 
