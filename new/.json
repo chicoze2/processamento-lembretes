@@ -1,12 +1,8 @@
-[
-    {'vendedor': 'ANDRE TULIOS GOMES', 'quantidade': 1.0, 'modelo': 'CG 160 START', 'tipovenda': 'AV - À VISTA', 'pessoa': 'ALEX FERNANDO RAYMUNDO MOREIRA', 'datahoramovimentacao': '2024-11-18T17: 04: 53', 'cep': '12.445-630', 'anofabrmod': '2024/2024', 'consorciooufinanceira': '', 'municipiouf': 'PINDAMONHANGABA/SP', 'telefonecelular': '(12) 992449739'
-    },
-    {'vendedor': 'RICARDO DINIZ DA SILVA', 'quantidade': 1.0, 'modelo': 'CG 160 FAN', 'tipovenda': 'AV - À VISTA', 'pessoa': 'GUILHERME GUNDIM RIBEIRO', 'datahoramovimentacao': '2024-11-18T11: 10: 33', 'cep': '27.525-592', 'anofabrmod': '2024/2025', 'consorciooufinanceira': '', 'municipiouf': 'RESENDE/RJ', 'telefonecelular': '(24) 998396724'
-    },
-    {'vendedor': 'CARLOS AUGUSTO DE SOUZA GOMES', 'quantidade': 1.0, 'modelo': 'CG 160 TITAN', 'tipovenda': 'CDC - FINANCIAMENTO', 'pessoa': 'MAIKE DA SILVA BISPO', 'datahoramovimentacao': '2024-11-18T14: 07: 43', 'cep': '08.062-590', 'anofabrmod': '2024/2025', 'consorciooufinanceira': 'BANCO HONDA', 'municipiouf': 'SÃO PAULO/SP', 'telefonecelular': None
-    },
-    {'vendedor': 'HENRIQUE SALOMAO QUEIROZ', 'quantidade': 1.0, 'modelo': 'CG 160 TITAN', 'tipovenda': 'AV - À VISTA', 'pessoa': 'PAULO HENRIQUE MAFFEI', 'datahoramovimentacao': '2024-11-19T09: 35: 44', 'cep': '03.980-110', 'anofabrmod': '2024/2025', 'consorciooufinanceira': '', 'municipiouf': 'SÃO PAULO/SP', 'telefonecelular': '(18) 996605222'
-    },
-    {'vendedor': 'LAURIENE MAGALHAES XAVIER', 'quantidade': 1.0, 'modelo': 'CB 300F TWISTER ABS', 'tipovenda': 'CDC - FINANCIAMENTO', 'pessoa': 'RAFAEL LEITE DA SILVA', 'datahoramovimentacao': '2024-11-18T10: 23: 48', 'cep': '03.944-050', 'anofabrmod': '2024/2025', 'consorciooufinanceira': 'BANCO HONDA', 'municipiouf': 'SÃO PAULO/SP', 'telefonecelular': '(11) 94859-0590'
-    }
-]
+{'quantidade': 1.0, 'modelo': 'NXR 160 BROS CBS', 'pessoa': 'FERNANDO FAUSTINO BEZERRA', 'valortotaldocumentofiscal': 25811.0, 'tipovenda': 'CDC - FINANCIAMENTO', 'datavenda': '2024-12-02T18: 57: 49', 'telefoneresidencial': None, 'telefonecelular': '(11) 982917231', 'telefonecomercial': None
+},
+{'quantidade': 1.0, 'modelo': 'NXR 160 BROS CBS', 'pessoa': 'WELIS FERREIRA BARBOSA', 'valortotaldocumentofiscal': 23500.0, 'tipovenda': 'CDC - FINANCIAMENTO', 'datavenda': '2024-12-02T13: 32: 11', 'telefoneresidencial': None, 'telefonecelular': '(12) 996839739', 'telefonecomercial': None
+},
+{'quantidade': 1.0, 'modelo': 'PCX 160 DLX ABS', 'pessoa': 'ALAINE DE AVILA BANDEIRA', 'valortotaldocumentofiscal': 22410.32, 'tipovenda': 'CNH - CONSÓRCIO NACIONAL HONDA', 'datavenda': '2024-11-30T12: 51: 04', 'telefoneresidencial': None, 'telefonecelular': '(12) 988784026', 'telefonecomercial': None
+},
+{'quantidade': 1.0, 'modelo': 'PCX 160 DLX ABS', 'pessoa': 'GABRIELA MARTINS DOS SANTOS', 'valortotaldocumentofiscal': 24277.12, 'tipovenda': 'CDC - FINANCIAMENTO', 'datavenda': '2024-11-30T09: 46: 02', 'telefoneresidencial': '(12) 38836502', 'telefonecelular': '(12) 982325305', 'telefonecomercial': None
+}

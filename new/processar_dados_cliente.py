@@ -119,8 +119,8 @@ Garanta a manutenção da sua garantia agendando agora mesmo por aqui!
 """
 
     else:
-        return None, None, None
         print(f"Ignorado {nome} - {delta_D} dias" )
+        return None, None, None
 
     return mensagem, etiqueta, disparo
 
@@ -154,7 +154,7 @@ def process_messages(relatorio_consolidado_path):
     df_mensagens = pd.DataFrame(mensagens_processadas)
     df_mensagens.to_csv('out/mensagens.csv', index=False)
 
-process_relatorios('2024-06-06', '2024-11-25', 'taubate_nov3.txt')
+process_relatorios('2024-06-06', '2024-12-02', 'ihs/taubate_nov2.txt')
 process_messages('out/consolidados.xlsx')
 
 
