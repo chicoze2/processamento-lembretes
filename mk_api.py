@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 def make_request(body):
 
     dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
+    load_dotenv()
 
     base_url = os.getenv('API_URL')
     headers = {

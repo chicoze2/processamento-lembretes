@@ -65,6 +65,14 @@ for index, row in df.iterrows():
                     resposta_envio = send_message(payload_mensagem)
                     print(f"Mensagem enviada: {resposta_envio}")
 
+                    payload_fechar = {
+                        "queueId": 57,
+                        "apiKey": "bf99d8f0ffa04849920e9375797741fe",
+                        "chatId": chatId
+                    }
+
+                    close_chat(payload_fechar)
+
                 else:
                     print(f"Erro: chatId não encontrado para o número {numero}")
             else:

@@ -54,3 +54,9 @@ def send_opportunity(payload, headers=None):
     except Exception as err:
         print(f"An error occurred: {err}")
 
+def close_chat(payload, headers=None):
+    try:
+        response = requests.post("https://universohonda.atenderbem.com/int" + '/endChat', json=payload, headers=headers)
+
+    except Exception as e:
+        print(f"Ocorreu um erro ao fechar o chat {e}")
